@@ -18,7 +18,7 @@ public class RUDPConfig {
     public static boolean double_send_start = true;
 
     public static int reSendDelay_min = 100;
-    public static float reSendDelay = 0.6f;
+    public static float reSendDelay = 0.37f;
     public static int reSendTryTimes = 10;
 
 }
