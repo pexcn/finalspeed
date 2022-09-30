@@ -572,14 +572,6 @@ public class ClientUI implements ClientUII, WindowListener {
                 config.isDirect_cn(), config.getProtocal().equals("tcp"),
                 null);
 
-        Route.es.execute(new Runnable() {
-
-            @Override
-            public void run() {
-                checkUpdate();
-            }
-        });
-
         setSpeed(config.getDownloadSpeed(), config.getUploadSpeed());
         if (isVisible & !min) {
             mainFrame.setVisible(true);
@@ -1035,42 +1027,6 @@ public class ClientUI implements ClientUII, WindowListener {
         button.setMargin(new Insets(0, 5, 0, 5));
         button.setFocusPainted(false);
         return button;
-    }
-
-    boolean haveNewVersion() {
-        return serverVersion > localVersion;
-    }
-
-    public void checkUpdate() {
-        for (int i = 0; i < 3; i++) {
-            checkingUpdate = true;
-            try {
-                Properties propServer = new Properties();
-                HttpURLConnection uc = Tools.getConnection(updateUrl);
-                uc.setUseCaches(false);
-                InputStream in = uc.getInputStream();
-                propServer.load(in);
-                serverVersion = Integer.parseInt(propServer.getProperty("version"));
-                break;
-            } catch (Exception e) {
-                e.printStackTrace();
-                try {
-                    Thread.sleep(3 * 1000);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
-            } finally {
-                checkingUpdate = false;
-            }
-        }
-        if (this.haveNewVersion()) {
-            int option = JOptionPane.showConfirmDialog(mainFrame, "发现新版本,立即更新吗?", "提醒", JOptionPane
-                    .YES_NO_CANCEL_OPTION);
-            if (option == JOptionPane.YES_OPTION) {
-                openUrl(homeUrl);
-            }
-        }
-
     }
 
     void initUI() {
