@@ -12,8 +12,8 @@ Java 1.7 or higher is required.
 - Build client & server: `gradlew release`
 
 ### Linux
-- Build client: `./gradlew releaseClient`<br>
-- Build server: `./gradlew releaseServer`<br>
+- Build client: `./gradlew releaseClient`
+- Build server: `./gradlew releaseServer`
 - Build client&server: `./gradlew release`
 
 ### Binary
@@ -44,9 +44,9 @@ java -jar finalspeed.jar
     // 协议
     "protocal": "udp",
     // 上传速度 (byte/s)
-    "upload_speed": 357469,
+    "upload_speed": 3574690,
     // 下载速度 (byte/s)
-    "download_speed": 11200698,
+    "download_speed": 17873454,
     // Socks5 端口
     "socks5_port": 1083
 }
