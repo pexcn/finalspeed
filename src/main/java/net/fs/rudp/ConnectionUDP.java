@@ -32,9 +32,9 @@ public class ConnectionUDP {
         this.dstPort = dstPort;
         this.mode = mode;
         if (mode == 1) {
-            MLog.println("                 发起连接RUDP " + dstIp + ":" + dstPort + " connectId " + connectId);
+            MLog.println("发起连接RUDP " + dstIp + ":" + dstPort + " connectId " + connectId);
         } else if (mode == 2) {
-            MLog.println("                 接受连接RUDP " + dstIp + ":" + dstPort + " connectId " + connectId);
+            MLog.println("接受连接RUDP " + dstIp + ":" + dstPort + " connectId " + connectId);
         }
         this.connectId = connectId;
         try {
@@ -50,13 +50,13 @@ public class ConnectionUDP {
             connected = false;
             route.connTable.remove(connectId);
             e.printStackTrace();
-            MLog.println("                 连接失败RUDP " + connectId);
+            MLog.println("连接失败RUDP " + connectId);
             synchronized (this) {
                 notifyAll();
             }
             throw e;
         }
-        MLog.println("                 连接成功RUDP " + connectId);
+        MLog.println("连接成功RUDP " + connectId);
         synchronized (this) {
             notifyAll();
         }
