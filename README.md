@@ -60,14 +60,14 @@ java -jar finalspeed.jar
             // 备注名
             "name": "shadowsocks",
             // 目标端口
-            "dst_port": 12345,
+            "dst_port": 1234,
             // 本地端口
-            "listen_port": 12345
+            "listen_port": 1234
         },
         {
-            "name": "ssh"
-            "dst_port": 22, 
-            "listen_port": 2222, 
+            "name": "ssh",
+            "dst_port": 22,
+            "listen_port": 2222
         }
     ]
 }
