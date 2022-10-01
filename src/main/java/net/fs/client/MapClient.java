@@ -215,21 +215,21 @@ public class MapClient implements Trafficlistener {
                 }
             } else if (systemName.contains("linux")) {
                 String cmd2 = "iptables -t filter -A OUTPUT -d " + ip + " -p tcp --dport " + serverPort + " -j DROP " +
-                        "-m comment --comment tcptun_fs ";
+                        "-m comment --comment tcptun_fs_client ";
                 runCommand(cmd2);
             } else if (systemName.contains("windows")) {
                 try {
                     if (systemName.contains("xp") || systemName.contains("2003")) {
-                        String cmd_add1 = "ipseccmd -w REG -p \"tcptun_fs\" -r \"Block TCP/" + serverPort + "\" -f " +
+                        String cmd_add1 = "ipseccmd -w REG -p \"tcptun_fs_client\" -r \"Block TCP/" + serverPort + "\" -f " +
                                 "0/255.255.255.255=" + ip + "/255.255.255.255:" + serverPort + ":tcp -n BLOCK -x ";
                         final Process p2 = Runtime.getRuntime().exec(cmd_add1, null);
                         p2.waitFor();
                     } else {
-                        String cmd_add1 = "netsh advfirewall firewall add rule name=tcptun_fs protocol=TCP dir=out " +
+                        String cmd_add1 = "netsh advfirewall firewall add rule name=tcptun_fs_client protocol=TCP dir=out " +
                                 "remoteport=" + serverPort + " remoteip=" + ip + " action=block ";
                         final Process p2 = Runtime.getRuntime().exec(cmd_add1, null);
                         p2.waitFor();
-                        String cmd_add2 = "netsh advfirewall firewall add rule name=tcptun_fs protocol=TCP dir=in " +
+                        String cmd_add2 = "netsh advfirewall firewall add rule name=tcptun_fs_client protocol=TCP dir=in " +
                                 "remoteport=" + serverPort + " remoteip=" + ip + " action=block ";
                         Process p3 = Runtime.getRuntime().exec(cmd_add2, null);
                         p3.waitFor();
@@ -264,11 +264,11 @@ public class MapClient implements Trafficlistener {
         } else {
             try {
                 if (systemName.contains("xp") || systemName.contains("2003")) {
-                    String cmd_delete = "ipseccmd -p \"tcptun_fs\" -w reg -y";
+                    String cmd_delete = "ipseccmd -p \"tcptun_fs_client\" -w reg -y";
                     final Process p1 = Runtime.getRuntime().exec(cmd_delete, null);
                     p1.waitFor();
                 } else {
-                    String cmd_delete = "netsh advfirewall firewall delete rule name=tcptun_fs ";
+                    String cmd_delete = "netsh advfirewall firewall delete rule name=tcptun_fs_client ";
                     final Process p1 = Runtime.getRuntime().exec(cmd_delete, null);
                     p1.waitFor();
                 }
@@ -337,7 +337,7 @@ public class MapClient implements Trafficlistener {
                     if (line == null) {
                         break;
                     } else {
-                        if (line.contains("tcptun_fs")) {
+                        if (line.contains("tcptun_fs_client")) {
                             int index = line.indexOf("   ");
                             if (index > 0) {
                                 String n = line.substring(0, index);
