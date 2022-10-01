@@ -302,19 +302,6 @@ public class ClientUI implements ClientUII, WindowListener {
         sp2.setLayout(new MigLayout("insets 0 0 0 0"));
         loginPanel.add(sp2, "align center,  wrap");
 
-        final JCheckBox cb = new JCheckBox("开机启动", config.isAutoStart());
-        sp2.add(cb, "align center");
-        cb.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                config.setAutoStart(cb.isSelected());
-                saveConfig();
-                setAutoRun(config.isAutoStart());
-            }
-
-        });
-
         JButton button_show_log = createButton("显示日志");
         sp2.add(button_show_log, "wrap");
         button_show_log.addActionListener(new ActionListener() {
@@ -866,9 +853,6 @@ public class ClientUI implements ClientUII, WindowListener {
             if (json.containsKey("protocal")) {
                 cfg.setProtocal(json.getString("protocal"));
             }
-            if (json.containsKey("auto_start")) {
-                cfg.setAutoStart(json.getBooleanValue("auto_start"));
-            }
 
             config = cfg;
         } catch (Exception e) {
@@ -918,8 +902,6 @@ public class ClientUI implements ClientUII, WindowListener {
                     json.put("upload_speed", config.getUploadSpeed());
                     json.put("socks5_port", config.getSocks5Port());
                     json.put("protocal", protocal);
-                    json.put("auto_start", config.isAutoStart());
-
 
                     if (text_serverAddress.getModel().getSize() > 0) {
                         text_serverAddress.removeItem(addressTxt);

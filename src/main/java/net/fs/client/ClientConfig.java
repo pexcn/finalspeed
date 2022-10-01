@@ -20,8 +20,6 @@ public class ClientConfig {
 
     String protocal = "tcp";
 
-    boolean autoStart = false;
-
     public String getServerAddress() {
         return serverAddress;
     }
@@ -92,14 +90,6 @@ public class ClientConfig {
 
     public void setProtocal(String protocal) {
         this.protocal = protocal;
-    }
-
-    public boolean isAutoStart() {
-        return autoStart;
-    }
-
-    public void setAutoStart(boolean autoStart) {
-        this.autoStart = autoStart;
     }
 
 }
