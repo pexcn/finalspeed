@@ -22,8 +22,6 @@ public class ClientConfig {
 
     boolean autoStart = false;
 
-    ArrayList<String> recentAddressList = new ArrayList<>();
-
     public String getServerAddress() {
         return serverAddress;
     }
@@ -102,14 +100,6 @@ public class ClientConfig {
 
     public void setAutoStart(boolean autoStart) {
         this.autoStart = autoStart;
-    }
-
-    public ArrayList<String> getRecentAddressList() {
-        return recentAddressList;
-    }
-
-    public void setRecentAddressList(ArrayList<String> recentAddressList) {
-        this.recentAddressList = recentAddressList;
     }
 
 }

@@ -222,14 +222,6 @@ public class ClientUI implements ClientUII, WindowListener {
             }
         });
 
-        for (int n = 0; n < config.getRecentAddressList().size(); n++) {
-            text_serverAddress.addItem(config.getRecentAddressList().get(n));
-        }
-
-        if (config.getRecentAddressList().size() == 0) {
-            text_serverAddress.setSelectedItem("");
-        }
-
         JButton button_removeAddress = createButton("删除");
         p1.add(button_removeAddress, "");
         button_removeAddress.addActionListener(new ActionListener() {
@@ -877,12 +869,6 @@ public class ClientUI implements ClientUII, WindowListener {
             if (json.containsKey("auto_start")) {
                 cfg.setAutoStart(json.getBooleanValue("auto_start"));
             }
-            if (json.containsKey("recent_address_list")) {
-                JSONArray list = json.getJSONArray("recent_address_list");
-                for (Object aList : list) {
-                    cfg.getRecentAddressList().add(aList.toString());
-                }
-            }
 
             config = cfg;
         } catch (Exception e) {
@@ -940,20 +926,6 @@ public class ClientUI implements ClientUII, WindowListener {
                     }
                     text_serverAddress.insertItemAt(addressTxt, 0);
                     text_serverAddress.setSelectedItem(addressTxt);
-
-
-                    JSONArray recentAddressList = new JSONArray();
-
-
-                    int size = text_serverAddress.getModel().getSize();
-                    for (int n = 0; n < size; n++) {
-                        String address = text_serverAddress.getModel().getElementAt(n);
-                        if (!address.equals("")) {
-                            recentAddressList.add(address);
-                        }
-                    }
-                    json.put("recent_address_list", recentAddressList);
-
 
                     saveFile(json.toJSONString().getBytes("utf-8"), configFilePath);
                     config.setServerAddress(serverAddress);
