@@ -46,9 +46,7 @@ java -jar finalspeed.jar
     // 上传速度 (byte/s)
     "upload_speed": 3574690,
     // 下载速度 (byte/s)
-    "download_speed": 17873454,
-    // Socks5 端口
-    "socks5_port": 1083
+    "download_speed": 17873454
 }
 ```
 

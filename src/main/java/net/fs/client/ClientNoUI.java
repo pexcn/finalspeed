@@ -98,9 +98,6 @@ public class ClientNoUI implements ClientUII {
             }
             cfg.setDownloadSpeed(json.getIntValue("download_speed"));
             cfg.setUploadSpeed(json.getIntValue("upload_speed"));
-            if (json.containsKey("socks5_port")) {
-                cfg.setSocks5Port(json.getIntValue("socks5_port"));
-            }
             config = cfg;
         } catch (Exception e) {
             e.printStackTrace();

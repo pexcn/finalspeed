@@ -14,8 +14,6 @@ public class ClientConfig {
 
     boolean direct_cn = true;
 
-    int socks5Port = 1083;
-
     String remoteAddress;
 
     String protocal = "tcp";
@@ -66,14 +64,6 @@ public class ClientConfig {
 
     public void setUploadSpeed(int uploadSpeed) {
         this.uploadSpeed = uploadSpeed;
-    }
-
-    public int getSocks5Port() {
-        return socks5Port;
-    }
-
-    public void setSocks5Port(int socks5Port) {
-        this.socks5Port = socks5Port;
     }
 
     public String getRemoteAddress() {

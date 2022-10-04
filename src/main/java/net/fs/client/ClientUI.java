@@ -847,9 +847,6 @@ public class ClientUI implements ClientUII, WindowListener {
             }
             cfg.setDownloadSpeed(json.getIntValue("download_speed"));
             cfg.setUploadSpeed(json.getIntValue("upload_speed"));
-            if (json.containsKey("socks5_port")) {
-                cfg.setSocks5Port(json.getIntValue("socks5_port"));
-            }
             if (json.containsKey("protocal")) {
                 cfg.setProtocal(json.getString("protocal"));
             }
@@ -900,7 +897,6 @@ public class ClientUI implements ClientUII, WindowListener {
                     json.put("server_port", serverPort);
                     json.put("download_speed", config.getDownloadSpeed());
                     json.put("upload_speed", config.getUploadSpeed());
-                    json.put("socks5_port", config.getSocks5Port());
                     json.put("protocal", protocal);
 
                     if (text_serverAddress.getModel().getSize() > 0) {
