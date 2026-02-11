@@ -215,7 +215,7 @@ public class MapClient implements Trafficlistener {
                 }
             } else if (systemName.contains("linux")) {
                 String cmd2 = "iptables -t filter -A OUTPUT -d " + ip + " -p tcp --dport " + serverPort + " -j DROP " +
-                        "-m comment --comment tcptun_fs_client ";
+                        "-m comment --comment finalspeed_client ";
                 runCommand(cmd2);
             } else if (systemName.contains("windows")) {
                 try {

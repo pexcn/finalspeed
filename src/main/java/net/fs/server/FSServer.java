@@ -205,7 +205,7 @@ public class FSServer {
     void setFireWall_linux_udp() {
         cleanUdpTunRule();
         String cmd2 = "iptables -I INPUT -p udp --dport " + routePort + " -j ACCEPT"
-                + " -m comment --comment udptun_fs_server";
+                + " -m comment --comment finalspeed_server";
         runCommand(cmd2);
     }
 
@@ -225,7 +225,7 @@ public class FSServer {
     void setFireWall_linux_tcp() {
         cleanTcpTunRule();
         String cmd2 = "iptables -I INPUT -p tcp --dport " + routePort + " -j DROP"
-                + " -m comment --comment tcptun_fs_server ";
+                + " -m comment --comment finalspeed_server";
         runCommand(cmd2);
 
     }
