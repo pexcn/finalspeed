@@ -13,6 +13,7 @@ public class FSClient {
         try {
             commandLine = parser.parse(options, args);
         } catch (ParseException e) {
+            @SuppressWarnings("deprecation")
             HelpFormatter helpFormatter = new HelpFormatter();
             helpFormatter.printHelp("java -jar finalspeed.jar [-b/--back]", options);
             System.exit(0);
